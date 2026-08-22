@@ -74,7 +74,7 @@
       </button>
     </div>
     
-    <!-- PANTALLA 3: GALERÍA 3 FOTOS -->
+    <!-- PANTALLA 3: GALERÍA 3 FOTOS - MEJORADO PARA ALTA CALIDAD -->
     <div class="screen" id="screen3" style="position:relative;z-index:1;display:none;flex-direction:column;align-items:center;padding:50px 24px;min-height:700px;">
       
       <p style="font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--muted);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:8px;">
@@ -86,20 +86,20 @@
       </h2>
       
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;max-width:340px;">
-        <!-- ✅ FOTO 1 CORREGIDA - Ruta GitHub -->
-        <div style="aspect-ratio:3/4;border-radius:4px;overflow:hidden;box-shadow:0 4px 16px rgba(139,90,43,0.15);border:3px solid #fff;background:linear-gradient(135deg,var(--accent-soft),var(--gold-soft));">
-          <img src="fotos/foto1.jpg" style="width:100%;height:100%;object-fit:cover;" alt="Nosotros" onerror="this.parentElement.style.background='linear-gradient(135deg,var(--accent-soft),var(--gold-soft))'">
+        <!-- ✅ FOTO 1 - MEJORADA -->
+        <div class="photo-frame" style="aspect-ratio:3/4;border-radius:4px;overflow:hidden;box-shadow:0 4px 16px rgba(139,90,43,0.15);border:3px solid #fff;background:linear-gradient(135deg,var(--accent-soft),var(--gold-soft));">
+          <img src="fotos/foto1.jpg" class="high-quality-img" alt="Nosotros" loading="eager">
         </div>
         
-        <!-- ✅ FOTO 2 CORREGIDA - Ruta GitHub -->
-        <div style="aspect-ratio:3/4;border-radius:4px;overflow:hidden;box-shadow:0 4px 16px rgba(139,90,43,0.15);border:3px solid #fff;background:linear-gradient(135deg,var(--gold-soft),var(--accent-soft));transform:translateY(20px);">
-          <img src="fotos/foto2.jpg" style="width:100%;height:100%;object-fit:cover;" alt="Nosotros" onerror="this.parentElement.style.background='linear-gradient(135deg,var(--gold-soft),var(--accent-soft))'">
+        <!-- ✅ FOTO 2 - MEJORADA -->
+        <div class="photo-frame" style="aspect-ratio:3/4;border-radius:4px;overflow:hidden;box-shadow:0 4px 16px rgba(139,90,43,0.15);border:3px solid #fff;background:linear-gradient(135deg,var(--gold-soft),var(--accent-soft));transform:translateY(20px);">
+          <img src="fotos/foto2.jpg" class="high-quality-img" alt="Nosotros" loading="eager">
         </div>
       </div>
       
-      <!-- ✅ FOTO 3 CORREGIDA - Ruta GitHub -->
-      <div style="width:100%;max-width:200px;margin-top:12px;aspect-ratio:4/3;border-radius:4px;overflow:hidden;box-shadow:0 4px 16px rgba(139,90,43,0.15);border:3px solid #fff;background:linear-gradient(135deg,var(--accent-soft),var(--gold-soft));">
-        <img src="fotos/foto3.jpg" style="width:100%;height:100%;object-fit:cover;" alt="Nosotros" onerror="this.parentElement.style.background='linear-gradient(135deg,var(--accent-soft),var(--gold-soft))'">
+      <!-- ✅ FOTO 3 - MEJORADA -->
+      <div class="photo-frame" style="width:100%;max-width:200px;margin-top:12px;aspect-ratio:4/3;border-radius:4px;overflow:hidden;box-shadow:0 4px 16px rgba(139,90,43,0.15);border:3px solid #fff;background:linear-gradient(135deg,var(--accent-soft),var(--gold-soft));">
+        <img src="fotos/foto3.jpg" class="high-quality-img" alt="Nosotros" loading="eager">
       </div>
       
       <p style="font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--muted);margin-top:20px;font-style:italic;text-align:center;">
@@ -238,16 +238,16 @@
       </button>
     </div>
     
-    <!-- PANTALLA 7: CIERRE -->
+    <!-- PANTALLA 7: CIERRE - FOTO FINAL MEJORADA -->
     <div class="screen" id="screen7" style="position:relative;z-index:1;display:none;flex-direction:column;align-items:center;padding:50px 24px;min-height:700px;">
       
       <p style="font-family:'Cormorant Garamond',serif;font-size:14px;color:var(--muted);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:16px;">
         Y para siempre
       </p>
       
-      <!-- ✅ FOTO FINAL CORREGIDA - Ruta GitHub -->
-      <div style="width:100%;max-width:300px;aspect-ratio:4/5;border-radius:4px;overflow:hidden;box-shadow:0 8px 32px rgba(139,90,43,0.2);border:4px solid #fff;margin-bottom:32px;background:linear-gradient(135deg,var(--accent-soft),var(--gold-soft));position:relative;">
-        <img src="fotos/foto-final.jpg" style="width:100%;height:100%;object-fit:cover;" alt="Para siempre" onerror="this.parentElement.style.background='linear-gradient(135deg,var(--accent-soft),var(--gold-soft))'">
+      <!-- ✅ FOTO FINAL - MEJORADA -->
+      <div class="photo-frame" style="width:100%;max-width:300px;aspect-ratio:4/5;border-radius:4px;overflow:hidden;box-shadow:0 8px 32px rgba(139,90,43,0.2);border:4px solid #fff;margin-bottom:32px;background:linear-gradient(135deg,var(--accent-soft),var(--gold-soft));position:relative;">
+        <img src="fotos/foto-final.jpg" class="high-quality-img" alt="Para siempre" loading="eager">
       </div>
       
       <p style="font-family:'Playfair Display',serif;font-size:22px;color:var(--text);text-align:center;line-height:1.5;margin-bottom:16px;font-weight:400;">
@@ -285,6 +285,27 @@
       --accent-soft: rgba(176,125,92,0.12);
       --gold: #c9a96e;
       --gold-soft: rgba(201,169,110,0.1);
+    }
+    
+    /* ✅ MEJORAS PARA FOTOS DE ALTA CALIDAD */
+    .high-quality-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      display: block;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      transform: translateZ(0);
+      filter: none;
+    }
+    
+    /* Si la foto no carga, muestra el fondo degradado */
+    .photo-frame:has(img[src=""]),
+    .photo-frame:has(img:not([src])) {
+      background: linear-gradient(135deg, var(--accent-soft), var(--gold-soft));
     }
     
     .btn-secondary {
@@ -361,14 +382,12 @@ function goToScreen(num) {
   }, 350);
 }
 
-// ===== CONFIGURACIÓN ACTUALIZADA =====
 var CONFIG = {
   startDate: '2024-03-31',
   yourName: 'Glendy',
   partnerName: 'Jesús',
   dateText: '31 de Marzo, 2024'
 };
-// =====================================
 
 (function(){
   document.getElementById('startDateDisplay').textContent = CONFIG.dateText;
