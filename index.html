@@ -80,8 +80,9 @@
         <span id="startDateDisplay">31 de Marzo, 2024</span>
       </p>
       
+      <!-- ✅ MODIFICACIÓN 1: Texto cambiado a "que Jesús & Glendy" -->
       <p style="font-family:'Dancing Script',cursive;font-size:clamp(30px, 9vw, 40px);color:var(--accent);margin:24px 0;line-height:1.2;">
-        Glendy & Jesús
+        que Jesús & Glendy
       </p>
       
       <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(15px, 4.5vw, 17px);color:var(--muted);font-style:italic;line-height:1.7;">
@@ -238,7 +239,7 @@
       </button>
     </div>
     
-    <!-- PANTALLA 6: CONTADOR -->
+    <!-- PANTALLA 6: CONTADOR + FOTO NUEVA -->
     <div class="screen" id="screen6" style="position:relative;z-index:1;display:none;flex-direction:column;align-items:center;padding:50px 20px;min-height:100vh;">
       
       <button onclick="toggleMusic()" class="music-btn" title="Activar/Pausar música">
@@ -278,6 +279,11 @@
           <div id="counter-days" style="font-family:'Playfair Display',serif;font-size:clamp(28px, 8vw, 36px);color:var(--accent);font-weight:500;line-height:1;">0</div>
           <div style="font-family:'Cormorant Garamond',serif;font-size:12px;color:var(--muted);margin-top:4px;letter-spacing:0.05em;">Días</div>
         </div>
+      </div>
+      
+      <!-- ✅ MODIFICACIÓN 2: FOTO NUEVA agregada debajo del contador -->
+      <div class="photo-frame" style="width:100%;max-width:220px;margin-bottom:20px;aspect-ratio:4/5;border-radius:4px;overflow:hidden;box-shadow:0 4px 16px rgba(139,90,43,0.15);border:3px solid #fff;background:linear-gradient(135deg,var(--accent-soft),var(--gold-soft));">
+        <img src="fotos/foto4.jpg" class="high-quality-img" alt="Nuestro recuerdo" loading="eager">
       </div>
       
       <p style="font-family:'Dancing Script',cursive;font-size:clamp(18px, 5.5vw, 20px);color:var(--accent);text-align:center;line-height:1.5;">
@@ -584,32 +590,18 @@
 var heartsInterval = null;
 var heartsContainer = document.getElementById('heartsContainer');
 
-// Función para crear UN corazón flotante
 function crearCorazon() {
   if (!heartsContainer) return;
   
   var corazon = document.createElement('div');
   corazon.className = 'floating-heart';
   
-  // Tamaño aleatorio (12px - 28px)
   var size = 12 + Math.random() * 16;
-  
-  // Posición horizontal aleatoria
-  var leftPos = Math.random() * 90 + 5; // 5% a 95% del ancho
-  
-  // Duración aleatoria (6s - 10s)
+  var leftPos = Math.random() * 90 + 5;
   var duration = 6 + Math.random() * 4;
-  
-  // Retraso aleatorio pequeño
   var delay = Math.random() * 0.5;
-  
-  // Opacidad aleatoria
   var opacity = 0.5 + Math.random() * 0.4;
-  
-  // Tipo de animación (2 variantes para que no sea monótono)
   var animType = Math.random() > 0.5 ? 'floatUp' : 'floatUpSway';
-  
-  // Color: rojo corazón, con variaciones sutiles
   var colors = ['#c9445a', '#d6455f', '#b83a4f', '#e0526a'];
   var color = colors[Math.floor(Math.random() * colors.length)];
   
@@ -626,7 +618,6 @@ function crearCorazon() {
   
   heartsContainer.appendChild(corazon);
   
-  // Eliminar el corazón después de que termine su animación
   setTimeout(function() {
     if (corazon.parentNode) {
       corazon.parentNode.removeChild(corazon);
@@ -634,22 +625,15 @@ function crearCorazon() {
   }, (duration + delay + 1) * 1000);
 }
 
-// Función para crear una ráfaga inicial de corazones (al tocar el botón)
 function rafagaInicialCorazones() {
-  // Crear 8 corazones de inmediato para el efecto de "explosión" suave
   for (var i = 0; i < 8; i++) {
     setTimeout(crearCorazon, i * 120);
   }
 }
 
-// Iniciar la lluvia continua de corazones (1 cada 2.2 segundos = cantidad moderada)
 function iniciarCorazonesContinuos() {
-  if (heartsInterval) return; // Evitar duplicados
-  
-  // Corazón inicial inmediato
+  if (heartsInterval) return;
   crearCorazon();
-  
-  // Luego uno cada 2.2 segundos
   heartsInterval = setInterval(crearCorazon, 2200);
 }
 
@@ -658,13 +642,10 @@ var music = document.getElementById('bgMusic');
 var musicPlaying = false;
 music.volume = 0.6;
 
-// ✨ Función que abre la sorpresa, enciende música y corazones
 function abrirSorpresa() {
-  // 💕 Activar corazones
   rafagaInicialCorazones();
   iniciarCorazonesContinuos();
   
-  // 🎵 Activar música
   var promesa = music.play();
   if (promesa !== undefined) {
     promesa.then(function() {
@@ -678,7 +659,6 @@ function abrirSorpresa() {
   goToScreen(2);
 }
 
-// Función para activar/pausar la música
 function toggleMusic() {
   if (musicPlaying) {
     music.pause();
@@ -693,7 +673,6 @@ function toggleMusic() {
   actualizarBotonesMusica();
 }
 
-// Actualiza el icono de todos los botones de música
 function actualizarBotonesMusica() {
   var botones = document.querySelectorAll('.music-btn');
   botones.forEach(function(btn) {
@@ -750,11 +729,6 @@ var CONFIG = {
   var btn1 = document.querySelector('#screen1 .btn-primary');
   if (btn1) {
     btn1.textContent = 'Te amo, ' + CONFIG.yourName;
-  }
-  
-  var scriptEl = document.querySelector('#screen2 p[style*="Dancing Script"]');
-  if (scriptEl) {
-    scriptEl.textContent = 'que ' + CONFIG.yourName + ' & ' + CONFIG.partnerName;
   }
 })();
 
