@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="es" style="margin:0;padding:0;">
 <head>
-  <!-- ✅ ETIQUETA FUNDAMENTAL PARA CELULAR -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta charset="UTF-8">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -13,9 +12,16 @@
 </head>
 <body style="margin:0;padding:0;background:#f8f4ed;overflow-x:hidden;">
 
+<!-- 🎵 ETIQUETA DE AUDIO - Aquí va tu canción -->
+<audio id="bgMusic" loop preload="auto">
+  <source src="cancion.mp3" type="audio/mpeg">
+</audio>
+
 <div style="background-color:transparent;box-sizing:border-box;">
-  <!-- ✅ CONTENEDOR AJUSTADO A CUALQUIER CELULAR -->
   <div id="tqr-app" style="width:100%;max-width:100%;margin:0 auto;min-height:100vh;position:relative;overflow:hidden;background:var(--bg);font-family:'Cormorant Garamond',serif;color:var(--text);">
+    
+    <!-- 💕 CONTENEDOR DE CORAZONES FLOTANTES -->
+    <div id="heartsContainer" style="position:absolute;inset:0;z-index:5;pointer-events:none;overflow:hidden;"></div>
     
     <!-- Fondo textura papel -->
     <div style="position:absolute;inset:0;background:url('https://p16-flow-image-sign.ibyteimg.com/tos-mya-i-3rsxbfecgb/rc_gen_image/1cc898ee3a0b469c876cf03ba45d5d3b.jpeg~tplv-0es2k971ck-image.image?rcl=20260822025826B7411E8D5177D84729E8&rk3s=8e244e95&rrcfp=02a80fc2&x-expires=1789930798&x-signature=RKg%2B0GimFz%2Fphh11mQMXGXltHmE%3D') center/cover;opacity:0.35;z-index:0;"></div>
@@ -32,7 +38,7 @@
         Para el amor de mi vida
       </p>
       
-      <button onclick="goToScreen(2)" class="btn-primary">
+      <button onclick="abrirSorpresa()" class="btn-primary">
         Te amo, Glendy
       </button>
       
@@ -43,6 +49,15 @@
     
     <!-- PANTALLA 2: NOMBRES & FECHA -->
     <div class="screen" id="screen2" style="position:relative;z-index:1;display:none;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:40px 24px;text-align:center;">
+      
+      <!-- 🎵 BOTÓN DE MÚSICA -->
+      <button onclick="toggleMusic()" class="music-btn" title="Activar/Pausar música">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2">
+          <path d="M9 18V5l12-2v13"/>
+          <circle cx="6" cy="18" r="3"/>
+          <circle cx="18" cy="16" r="3"/>
+        </svg>
+      </button>
       
       <!-- Ornamento superior -->
       <svg width="160" height="30" viewBox="0 0 200 40" fill="none" style="margin-bottom:32px;">
@@ -75,7 +90,6 @@
         de nuestras vidas
       </p>
       
-      <!-- Ornamento inferior -->
       <svg width="120" height="20" viewBox="0 0 150 30" fill="none" style="margin-top:40px;margin-bottom:32px;">
         <path d="M75 8 L75 22" stroke="var(--accent)" stroke-width="0.5" opacity="0.4"/>
         <path d="M50 15 L100 15" stroke="var(--accent)" stroke-width="0.5" opacity="0.4"/>
@@ -90,6 +104,14 @@
     <!-- PANTALLA 3: GALERÍA 3 FOTOS -->
     <div class="screen" id="screen3" style="position:relative;z-index:1;display:none;flex-direction:column;align-items:center;padding:50px 20px;min-height:100vh;">
       
+      <button onclick="toggleMusic()" class="music-btn" title="Activar/Pausar música">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2">
+          <path d="M9 18V5l12-2v13"/>
+          <circle cx="6" cy="18" r="3"/>
+          <circle cx="18" cy="16" r="3"/>
+        </svg>
+      </button>
+      
       <p style="font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--muted);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:8px;">
         Momentos que atesoro
       </p>
@@ -99,18 +121,15 @@
       </h2>
       
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;max-width:340px;">
-        <!-- FOTO 1 -->
         <div class="photo-frame" style="aspect-ratio:3/4;border-radius:4px;overflow:hidden;box-shadow:0 4px 16px rgba(139,90,43,0.15);border:3px solid #fff;background:linear-gradient(135deg,var(--accent-soft),var(--gold-soft));">
           <img src="fotos/foto1.jpg" class="high-quality-img" alt="Nosotros" loading="eager">
         </div>
         
-        <!-- FOTO 2 -->
         <div class="photo-frame" style="aspect-ratio:3/4;border-radius:4px;overflow:hidden;box-shadow:0 4px 16px rgba(139,90,43,0.15);border:3px solid #fff;background:linear-gradient(135deg,var(--gold-soft),var(--accent-soft));transform:translateY(20px);">
           <img src="fotos/foto2.jpg" class="high-quality-img" alt="Nosotros" loading="eager">
         </div>
       </div>
       
-      <!-- FOTO 3 -->
       <div class="photo-frame" style="width:100%;max-width:200px;margin-top:12px;aspect-ratio:4/3;border-radius:4px;overflow:hidden;box-shadow:0 4px 16px rgba(139,90,43,0.15);border:3px solid #fff;background:linear-gradient(135deg,var(--accent-soft),var(--gold-soft));">
         <img src="fotos/foto3.jpg" class="high-quality-img" alt="Nosotros" loading="eager">
       </div>
@@ -133,6 +152,14 @@
     <!-- PANTALLA 4: CARTA MANUSCRITA -->
     <div class="screen" id="screen4" style="position:relative;z-index:1;display:none;flex-direction:column;align-items:center;padding:50px 20px;min-height:100vh;">
       
+      <button onclick="toggleMusic()" class="music-btn" title="Activar/Pausar música">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2">
+          <path d="M9 18V5l12-2v13"/>
+          <circle cx="6" cy="18" r="3"/>
+          <circle cx="18" cy="16" r="3"/>
+        </svg>
+      </button>
+      
       <p style="font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--muted);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:8px;">
         Una carta para ti
       </p>
@@ -143,7 +170,6 @@
       
       <div style="width:100%;max-width:340px;background:rgba(255,255,255,0.5);padding:24px 20px;border-radius:2px;border:1px solid rgba(176,125,92,0.15);box-shadow:0 2px 12px rgba(139,90,43,0.08);position:relative;">
         
-        <!-- Esquinas decorativas -->
         <svg width="20" height="20" viewBox="0 0 30 30" style="position:absolute;top:6px;left:6px;opacity:0.3;">
           <path d="M2 15 Q2 2 15 2" stroke="var(--accent)" stroke-width="1" fill="none"/>
         </svg>
@@ -183,6 +209,14 @@
     <!-- PANTALLA 5: PREGUNTA INTERACTIVA -->
     <div class="screen" id="screen5" style="position:relative;z-index:1;display:none;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;padding:40px 24px;text-align:center;">
       
+      <button onclick="toggleMusic()" class="music-btn" title="Activar/Pausar música">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2">
+          <path d="M9 18V5l12-2v13"/>
+          <circle cx="6" cy="18" r="3"/>
+          <circle cx="18" cy="16" r="3"/>
+        </svg>
+      </button>
+      
       <svg width="56" height="56" viewBox="0 0 24 24" fill="var(--accent)" style="margin-bottom:28px;opacity:0.85;">
         <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
       </svg>
@@ -202,6 +236,14 @@
     
     <!-- PANTALLA 6: CONTADOR -->
     <div class="screen" id="screen6" style="position:relative;z-index:1;display:none;flex-direction:column;align-items:center;padding:50px 20px;min-height:100vh;">
+      
+      <button onclick="toggleMusic()" class="music-btn" title="Activar/Pausar música">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2">
+          <path d="M9 18V5l12-2v13"/>
+          <circle cx="6" cy="18" r="3"/>
+          <circle cx="18" cy="16" r="3"/>
+        </svg>
+      </button>
       
       <svg width="160" height="30" viewBox="0 0 200 40" fill="none" style="margin-bottom:20px;">
         <path d="M100 5 L100 35" stroke="var(--accent)" stroke-width="0.5" opacity="0.5"/>
@@ -254,11 +296,18 @@
     <!-- PANTALLA 7: CIERRE -->
     <div class="screen" id="screen7" style="position:relative;z-index:1;display:none;flex-direction:column;align-items:center;padding:50px 20px;min-height:100vh;">
       
+      <button onclick="toggleMusic()" class="music-btn" title="Activar/Pausar música">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2">
+          <path d="M9 18V5l12-2v13"/>
+          <circle cx="6" cy="18" r="3"/>
+          <circle cx="18" cy="16" r="3"/>
+        </svg>
+      </button>
+      
       <p style="font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--muted);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:16px;">
         Y para siempre
       </p>
       
-      <!-- FOTO FINAL -->
       <div class="photo-frame" style="width:100%;max-width:280px;aspect-ratio:4/5;border-radius:4px;overflow:hidden;box-shadow:0 8px 32px rgba(139,90,43,0.2);border:4px solid #fff;margin-bottom:28px;background:linear-gradient(135deg,var(--accent-soft),var(--gold-soft));position:relative;">
         <img src="fotos/foto-final.jpg" class="high-quality-img" alt="Para siempre" loading="eager">
       </div>
@@ -299,9 +348,10 @@
       --accent-soft: rgba(176,125,92,0.12);
       --gold: #c9a96e;
       --gold-soft: rgba(201,169,110,0.1);
+      --heart-red: #c9445a;
+      --heart-red-soft: rgba(201,68,90,0.7);
     }
     
-    /* ✅ AJUSTES GENERALES PARA CELULAR */
     * {
       -webkit-tap-highlight-color: transparent;
       -webkit-touch-callout: none;
@@ -327,7 +377,89 @@
       transform: translateZ(0);
     }
     
-    /* ✅ BOTONES TÁCTILES (tamaño mínimo 44px para dedos) */
+    /* 🎵 BOTÓN DE MÚSICA */
+    .music-btn {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.7);
+      border: 1px solid rgba(176,125,92,0.2);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: all 0.2s;
+      touch-action: manipulation;
+      backdrop-filter: blur(4px);
+    }
+    
+    .music-btn:active {
+      transform: scale(0.92);
+      background: var(--accent-soft);
+    }
+    
+    .music-btn.music-on {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+    }
+    
+    .music-btn.music-on svg {
+      stroke: var(--accent);
+    }
+    
+    /* 💕 ANIMACIÓN DE CORAZONES FLOTANTES */
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) translateX(0) scale(0.5);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+        transform: translateY(-10vh) translateX(5px) scale(0.8);
+      }
+      50% {
+        transform: translateY(-50vh) translateX(-8px) scale(1);
+      }
+      90% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-110vh) translateX(4px) scale(0.6);
+        opacity: 0;
+      }
+    }
+    
+    @keyframes floatUpSway {
+      0% {
+        transform: translateY(0) translateX(0) rotate(-5deg) scale(0.4);
+        opacity: 0;
+      }
+      15% {
+        opacity: 0.9;
+      }
+      50% {
+        transform: translateY(-55vh) translateX(15px) rotate(5deg) scale(1);
+      }
+      100% {
+        transform: translateY(-110vh) translateX(-10px) rotate(-3deg) scale(0.5);
+        opacity: 0;
+      }
+    }
+    
+    .floating-heart {
+      position: absolute;
+      bottom: -40px;
+      pointer-events: none;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
+    }
+    
+    /* BOTONES */
     .btn-primary {
       background: var(--accent);
       color: #fff;
@@ -434,7 +566,6 @@
       animation: pulse 2.5s ease-in-out infinite;
     }
     
-    /* Ajuste para pantallas muy pequeñas */
     @media (max-width: 340px) {
       .screen {
         padding-left: 16px !important;
@@ -444,6 +575,138 @@
   `;
   document.head.appendChild(s);
 })();
+
+// 💕 SISTEMA DE CORAZONES FLOTANTES
+var heartsInterval = null;
+var heartsContainer = document.getElementById('heartsContainer');
+
+// Función para crear UN corazón flotante
+function crearCorazon() {
+  if (!heartsContainer) return;
+  
+  var corazon = document.createElement('div');
+  corazon.className = 'floating-heart';
+  
+  // Tamaño aleatorio (12px - 28px)
+  var size = 12 + Math.random() * 16;
+  
+  // Posición horizontal aleatoria
+  var leftPos = Math.random() * 90 + 5; // 5% a 95% del ancho
+  
+  // Duración aleatoria (6s - 10s)
+  var duration = 6 + Math.random() * 4;
+  
+  // Retraso aleatorio pequeño
+  var delay = Math.random() * 0.5;
+  
+  // Opacidad aleatoria
+  var opacity = 0.5 + Math.random() * 0.4;
+  
+  // Tipo de animación (2 variantes para que no sea monótono)
+  var animType = Math.random() > 0.5 ? 'floatUp' : 'floatUpSway';
+  
+  // Color: rojo corazón, con variaciones sutiles
+  var colors = ['#c9445a', '#d6455f', '#b83a4f', '#e0526a'];
+  var color = colors[Math.floor(Math.random() * colors.length)];
+  
+  corazon.innerHTML = `
+    <svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="${color}" style="opacity:${opacity};filter:drop-shadow(0 1px 2px rgba(201,68,90,0.3));">
+      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+    </svg>
+  `;
+  
+  corazon.style.left = leftPos + '%';
+  corazon.style.animationName = animType;
+  corazon.style.animationDuration = duration + 's';
+  corazon.style.animationDelay = delay + 's';
+  
+  heartsContainer.appendChild(corazon);
+  
+  // Eliminar el corazón después de que termine su animación
+  setTimeout(function() {
+    if (corazon.parentNode) {
+      corazon.parentNode.removeChild(corazon);
+    }
+  }, (duration + delay + 1) * 1000);
+}
+
+// Función para crear una ráfaga inicial de corazones (al tocar el botón)
+function rafagaInicialCorazones() {
+  // Crear 8 corazones de inmediato para el efecto de "explosión" suave
+  for (var i = 0; i < 8; i++) {
+    setTimeout(crearCorazon, i * 120);
+  }
+}
+
+// Iniciar la lluvia continua de corazones (1 cada 2.2 segundos = cantidad moderada)
+function iniciarCorazonesContinuos() {
+  if (heartsInterval) return; // Evitar duplicados
+  
+  // Corazón inicial inmediato
+  crearCorazon();
+  
+  // Luego uno cada 2.2 segundos
+  heartsInterval = setInterval(crearCorazon, 2200);
+}
+
+// 🎵 CONTROL DE MÚSICA
+var music = document.getElementById('bgMusic');
+var musicPlaying = false;
+music.volume = 0.6;
+
+// ✨ Función que abre la sorpresa, enciende música y corazones
+function abrirSorpresa() {
+  // 💕 Activar corazones
+  rafagaInicialCorazones();
+  iniciarCorazonesContinuos();
+  
+  // 🎵 Activar música
+  var promesa = music.play();
+  if (promesa !== undefined) {
+    promesa.then(function() {
+      musicPlaying = true;
+      actualizarBotonesMusica();
+    }).catch(function(error) {
+      console.log('Reproducción automática bloqueada');
+    });
+  }
+  
+  goToScreen(2);
+}
+
+// Función para activar/pausar la música
+function toggleMusic() {
+  if (musicPlaying) {
+    music.pause();
+    musicPlaying = false;
+  } else {
+    music.play().then(function() {
+      musicPlaying = true;
+    }).catch(function(e) {
+      alert('Asegúrate de haber subido el archivo cancion.mp3 a tu repositorio');
+    });
+  }
+  actualizarBotonesMusica();
+}
+
+// Actualiza el icono de todos los botones de música
+function actualizarBotonesMusica() {
+  var botones = document.querySelectorAll('.music-btn');
+  botones.forEach(function(btn) {
+    var svg = btn.querySelector('svg');
+    if (musicPlaying) {
+      btn.classList.add('music-on');
+      svg.innerHTML = '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';
+      svg.setAttribute('fill', 'var(--accent)');
+      svg.setAttribute('stroke', 'none');
+    } else {
+      btn.classList.remove('music-on');
+      svg.innerHTML = '<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>';
+      svg.setAttribute('fill', 'none');
+      svg.setAttribute('stroke', 'var(--accent)');
+    }
+  });
+}
 
 // Navegación entre pantallas
 var currentScreen = 1;
